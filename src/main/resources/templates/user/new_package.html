@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Package</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Create New Package</h1>
+
+    <div class="d-flex justify-content-between mb-3">
+        <a href="/auth/login" class="btn btn-danger">Logout</a>
+        <a href="/user/main" class='btn btn-secondary'>Back to Main Page</a>
+    </div>
+
+    <form th:action="@{/user/new_package}" th:object="${package}" method="post">
+        <div class="mb-3">
+            <label for="name" class="form-label">Package Name</label>
+            <input type="text" id="name" th:field="*{name}" class="form-control" placeholder="Enter package name" required>
+        </div>
+        <div class="mb-3">
+            <label for="weight" class="form-label">Weight (kg)</label>
+            <input type="number" id="weight" th:field="*{weight}" class="form-control" placeholder="Enter weight" required step="0.01">
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Price ($)</label>
+            <input type="number" id="price" th:field="*{price}" class="form-control" placeholder="Enter price" required step="0.01">
+        </div>
+        <div class="mb-3">
+            <label for="size" class="form-label">Size</label>
+            <input type="text" id="size" th:field="*{size}" class="form-control" placeholder="Enter size (e.g., LxWxH)" required>
+        </div>
+        <div class="mb-3">
+            <label for="senderId" class="form-label">Sender ID</label>
+            <input type="text" id="senderId" th:field="*{sender.id}" class="form-control" placeholder="Enter sender ID" required>
+        </div>
+        <div class="mb-3">
+            <label for="receiverId" class="form-label">Receiver ID</label>
+            <input type="text" id="receiverId" th:field="*{receiver.id}" class="form-control" placeholder="Enter receiver ID" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Package</button>
+    </form>
+
+</div>
+
+<script src="//cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
